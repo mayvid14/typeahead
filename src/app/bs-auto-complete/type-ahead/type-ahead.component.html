@@ -1,0 +1,4 @@
+<div class="col-md-6 offset-md-3">
+    <pre class="card card-block card-header mb-3">Model: {{selected | json}}</pre>
+    <input [(ngModel)]="selected" [typeahead]="stores" class="form-control">
+</div>
