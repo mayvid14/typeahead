@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-result',
@@ -9,10 +9,10 @@ import { Router } from '@angular/router';
 export class ResultComponent implements OnInit {
   result: string;
 
-  constructor(private router: Router) { }
+  constructor(private router: ActivatedRoute) { }
 
   ngOnInit() {
-    this.result = decodeURI(this.router.url);
+    this.router.url.subscribe(val => this.result = decodeURI(val.join('/')));
   }
 
 }
