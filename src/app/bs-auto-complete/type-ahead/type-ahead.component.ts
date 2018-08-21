@@ -9,7 +9,7 @@ import { ToFetchService } from '../../to-fetch.service';
 })
 export class TypeAheadComponent implements OnInit {
   stores: string[] = [];
-  selected: Store;
+  selected: string;
 
   constructor(private service: ToFetchService) { }
 
@@ -17,6 +17,12 @@ export class TypeAheadComponent implements OnInit {
     this.service.getStores().subscribe((val: Store[]) => {
       val.forEach(store => this.stores.push(store.name));
     }, error => console.log(error));
+  }
+
+  sub(event: KeyboardEvent) {
+    if (event && event.key === 'Enter') {
+      window.location.href = './' + encodeURI(this.selected);
+    }
   }
 
 }

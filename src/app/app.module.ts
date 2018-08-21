@@ -8,12 +8,14 @@ import { InitCapPipe } from './init-cap.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { ToFetchService } from './to-fetch.service';
 import { FilterWordsPipe } from './filter-words.pipe';
+import { ResultComponent } from './result/result.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InitCapPipe,
-    FilterWordsPipe
+    FilterWordsPipe,
+    ResultComponent
   ],
   imports: [
     BrowserModule,

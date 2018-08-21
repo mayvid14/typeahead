@@ -35,7 +35,7 @@ export class AutoCompleteComponent implements OnInit {
   }
 
   sub() {
-
+    window.location.href = './' + encodeURI(this.form.value.autoComp);
   }
 
 }
