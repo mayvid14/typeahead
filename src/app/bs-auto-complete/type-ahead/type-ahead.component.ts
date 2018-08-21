@@ -16,7 +16,10 @@ export class TypeAheadComponent implements OnInit {
   ngOnInit() {
     this.service.getStores().subscribe((val: Store[]) => {
       val.forEach(store => this.stores.push(store.name));
-    }, error => console.log(error));
+    }, error => {
+      const arr = this.service.getFakeStores();
+      arr.forEach(store => this.stores.push(store.name));
+    });
   }
 
   sub(event: KeyboardEvent) {

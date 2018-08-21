@@ -24,7 +24,7 @@ export class AutoCompleteComponent implements OnInit {
     this.service.getStores().subscribe((val: Store[]) => {
       this.options = val;
       this.filter();
-    });
+    }, err => this.options = this.service.getFakeStores());
   }
 
   filter(event?: KeyboardEvent) {
