@@ -4,7 +4,10 @@ import { RouterModule } from '@angular/router';
 import { AutoCompleteComponent } from './auto-complete/auto-complete.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatAutocompleteModule, MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/material';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 import { FilterWordsPipe } from '../filter-words.pipe';
 
 @NgModule({
