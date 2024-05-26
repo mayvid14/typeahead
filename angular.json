@@ -53,18 +53,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "AutoCompDemo:build"
+            "buildTarget": "AutoCompDemo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "AutoCompDemo:build:production"
+              "buildTarget": "AutoCompDemo:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "AutoCompDemo:build"
+            "buildTarget": "AutoCompDemo:build"
           }
         },
         "test": {
