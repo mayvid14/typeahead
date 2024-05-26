@@ -1,11 +1,12 @@
-<div fxLayout="row" fxLayoutAlign="center">
-  <span fxFlex="50%">{{this.form.value | json}}
+<div>
+  <span>{{this.form.value | json}}
   </span>
 </div>
-<div fxLayout="row" fxLayoutAlign="center">
-  <form [formGroup]="form" fxFlex="50%" (submit)="sub()">
-    <mat-form-field fxFlex>
-      <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="autoComp" [matAutocomplete]="auto" (keyup)="filter($event)">
+<div>
+  <form [formGroup]="form" (submit)="sub()">
+    <mat-form-field>
+      <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="autoComp"
+        [matAutocomplete]="auto" (keyup)="filter($event)">
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let option of show" [value]="option.name">
           {{option.name}}
