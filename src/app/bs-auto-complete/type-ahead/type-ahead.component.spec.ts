@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TypeAheadComponent } from './type-ahead.component';
 
@@ -6,12 +6,12 @@ describe('TypeAheadComponent', () => {
   let component: TypeAheadComponent;
   let fixture: ComponentFixture<TypeAheadComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [ TypeAheadComponent ]
     })
     .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TypeAheadComponent);

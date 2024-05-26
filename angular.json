@@ -14,12 +14,15 @@
       "schematics": {},
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/AutoCompDemo",
+            "outputPath": {
+              "base": "dist/AutoCompDemo"
+            },
             "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": [
+              "src/polyfills.ts"
+            ],
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
@@ -28,7 +31,8 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "browser": "src/main.ts"
           },
           "configurations": {
             "production": {
@@ -44,27 +48,25 @@
               "extractCss": true,
               "namedChunks": false,
               "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true
+              "extractLicenses": true
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "AutoCompDemo:build"
+            "buildTarget": "AutoCompDemo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "AutoCompDemo:build:production"
+              "buildTarget": "AutoCompDemo:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "AutoCompDemo:build"
+            "buildTarget": "AutoCompDemo:build"
           }
         },
         "test": {
@@ -125,6 +127,5 @@
         }
       }
     }
-  },
-  "defaultProject": "AutoCompDemo"
+  }
 }

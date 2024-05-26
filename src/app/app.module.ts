@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InitCapPipe } from './init-cap.pipe';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ToFetchService } from './to-fetch.service';
 import { FilterWordsPipe } from './filter-words.pipe';
 import { ResultComponent } from './result/result.component';
@@ -17,13 +17,15 @@ import { ResultComponent } from './result/result.component';
     FilterWordsPipe,
     ResultComponent
   ],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [ToFetchService],
-  bootstrap: [AppComponent]
+  providers: [
+    ToFetchService,
+    provideHttpClient(withInterceptorsFromDi())
+  ]
 })
 export class AppModule { }

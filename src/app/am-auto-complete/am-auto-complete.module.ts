@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AutoCompleteComponent } from './auto-complete/auto-complete.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,7 +15,6 @@ import { FilterWordsPipe } from '../filter-words.pipe';
     RouterModule.forChild([{
       path: '', component: AutoCompleteComponent
     }]),
-    FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
     MatAutocompleteModule,

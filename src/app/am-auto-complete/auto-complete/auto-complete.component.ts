@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { ToFetchService } from '../../to-fetch.service';
 import { Store } from '../../store';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -15,16 +14,23 @@ export class AutoCompleteComponent implements OnInit {
   show: Store[];
   form: FormGroup;
 
-  constructor(private service: ToFetchService, private fb: FormBuilder, private filterPipe: FilterWordsPipe) { }
+  constructor(
+    private service: ToFetchService, 
+    private fb: FormBuilder, 
+    private filterPipe: FilterWordsPipe,
+  ) { }
 
   ngOnInit() {
     this.form = this.fb.group({
       autoComp: ['']
     });
-    this.service.getStores().subscribe((val: Store[]) => {
-      this.options = val;
-      this.filter();
-    }, err => this.options = this.service.getFakeStores());
+    this.service.getStores().subscribe({
+      next: (val: Store[]) => {
+        this.options = val;
+        this.filter();
+      },
+      error: err => this.options = this.service.getFakeStores()
+    });
   }
 
   filter(event?: KeyboardEvent) {
