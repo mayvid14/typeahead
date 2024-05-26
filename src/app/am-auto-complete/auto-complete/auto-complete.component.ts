@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { ToFetchService } from '../../to-fetch.service';
 import { Store } from '../../store';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { FilterWordsPipe } from '../../filter-words.pipe';
 
 @Component({
@@ -13,18 +12,25 @@ import { FilterWordsPipe } from '../../filter-words.pipe';
 export class AutoCompleteComponent implements OnInit {
   options: Store[];
   show: Store[];
-  form: UntypedFormGroup;
+  form: FormGroup;
 
-  constructor(private service: ToFetchService, private fb: UntypedFormBuilder, private filterPipe: FilterWordsPipe) { }
+  constructor(
+    private service: ToFetchService, 
+    private fb: FormBuilder, 
+    private filterPipe: FilterWordsPipe,
+  ) { }
 
   ngOnInit() {
     this.form = this.fb.group({
       autoComp: ['']
     });
-    this.service.getStores().subscribe((val: Store[]) => {
-      this.options = val;
-      this.filter();
-    }, err => this.options = this.service.getFakeStores());
+    this.service.getStores().subscribe({
+      next: (val: Store[]) => {
+        this.options = val;
+        this.filter();
+      },
+      error: err => this.options = this.service.getFakeStores()
+    });
   }
 
   filter(event?: KeyboardEvent) {

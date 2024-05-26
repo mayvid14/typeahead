@@ -14,11 +14,14 @@ export class TypeAheadComponent implements OnInit {
   constructor(private service: ToFetchService) { }
 
   ngOnInit() {
-    this.service.getStores().subscribe((val: Store[]) => {
-      val.forEach(store => this.stores.push(store.name));
-    }, error => {
-      const arr = this.service.getFakeStores();
-      arr.forEach(store => this.stores.push(store.name));
+    this.service.getStores().subscribe({
+      next: (val: Store[]) => {
+        val.forEach(store => this.stores.push(store.name));
+      }, 
+      error: (_error) => {
+        const arr = this.service.getFakeStores();
+        arr.forEach(store => this.stores.push(store.name));
+      }
     });
   }
 

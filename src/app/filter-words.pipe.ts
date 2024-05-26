@@ -6,8 +6,8 @@ import { Store } from './store';
 })
 export class FilterWordsPipe implements PipeTransform {
 
-  transform(value: Store[], term: string): Store[] {
-    return value.filter(store => store.name.toLowerCase().indexOf(term.toLowerCase()) > -1);
+  transform(value?: Store[], term?: string): Store[] {
+    return value?.filter(store => store.name.toLowerCase().indexOf(term?.toLowerCase()) > -1);
   }
 
 }
